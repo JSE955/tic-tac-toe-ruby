@@ -1,18 +1,20 @@
 class Game
   def initialize
-    @board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    @board = [['X', 'X', 'Y'], ['Y', 'Y', 'Y'], [7, 8, 9]]
   end
 
-  def check_for_winner
-    true
+  def check_for_winner(player_mark)
+    check_horizontal(player_mark)
   end
 
   private
 
-  def check_horizontal
+  def check_horizontal(player_mark)
+    result = false
     @board.each do |row|
-      return true if row.all? { |mark| %w[X Y].include?(mark) }
+      result = true if row.all? { |mark| mark == player_mark }
     end
+    result
   end
 
   def check_vertical
@@ -23,3 +25,6 @@ class Game
     end
   end
 end
+
+my_game = Game.new
+puts my_game.check_for_winner('Y')
