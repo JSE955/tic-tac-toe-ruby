@@ -1,10 +1,12 @@
 class Game
   def initialize
-    @board = [['X', 'X', 'Y'], ['Y', 'Y', 'Y'], [7, 8, 9]]
+    @board = [['X', 'X', 'Y'], ['X', 'Y', 'Y'], ['Y', 8, 9]]
   end
 
   def check_for_winner(player_mark)
-    check_horizontal(player_mark)
+    result = false
+    result = true if check_vertical(player_mark) || check_horizontal(player_mark)
+    result
   end
 
   private
@@ -17,14 +19,14 @@ class Game
     result
   end
 
-  def check_vertical
+  def check_vertical(player_mark)
+    result = false
     for col in 0..2
-      for row in 0..2
-        return true if [@board[row][col], @board[row][col], @board[row][col]]
-      end
+      result = true if [@board[0][col], @board[1][col], @board[2][col]] == [player_mark, player_mark, player_mark]
     end
+    result
   end
 end
 
 my_game = Game.new
-puts my_game.check_for_winner('Y')
+puts my_game.check_for_winner('X')
