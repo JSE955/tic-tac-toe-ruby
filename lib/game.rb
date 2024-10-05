@@ -1,12 +1,21 @@
 class Game
   def initialize
-    @board = [['X', 'X', 'X'], ['X', 'X', 'Y'], ['X', 8, 'Y']]
+    @board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
   end
 
   def check_for_winner(player_mark)
     result = false
     result = true if check_vertical(player_mark) || check_horizontal(player_mark) || check_diagonal(player_mark)
     result
+  end
+
+  def display_board
+    puts "#{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]}"
+    puts '----------'
+    puts "#{@board[1][0]} | #{@board[1][1]} | #{@board[1][2]}"
+    puts '----------'
+    puts "#{@board[2][0]} | #{@board[2][1]} | #{@board[2][2]}"
+    puts '----------'
   end
 
   private
@@ -36,4 +45,4 @@ class Game
 end
 
 my_game = Game.new
-puts my_game.check_for_winner('X')
+my_game.display_board
