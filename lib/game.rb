@@ -6,6 +6,10 @@ class Game
   def check_for_winner(player_mark)
     result = false
     result = true if check_vertical(player_mark) || check_horizontal(player_mark) || check_diagonal(player_mark)
+    if @board.flatten.all? { |mark| %w[X Y].include?(mark) }
+      puts "It's a tie!"
+      return
+    end
     result
   end
 
