@@ -11,3 +11,5 @@ player_two = Player.new(name, 'Y')
 game = Game.new(player_one, player_two)
 
 game.display_board
+game.mark_board(1)
+game.display_board
