@@ -13,13 +13,12 @@ class Game
     @current_player = @current_player == @players[0] ? @players[1] : @players[0]
   end
 
-  def check_for_winner(player_mark)
+  def check_for_winner
     result = false
-    if check_vertical(player_mark) || check_horizontal(player_mark) || check_diagonal(player_mark)
+    if check_vertical(@current_player.mark) || check_horizontal(@current_player.mark) || check_diagonal(@current_player.mark)
       result = true
       puts "#{@current_player.name} wins!"
-    end
-    if @board.flatten.all? { |mark| %w[X Y].include?(mark) }
+    elsif @board.flatten.all? { |mark| %w[X Y].include?(mark) }
       puts "It's a tie!"
       result = true
     end
@@ -36,6 +35,7 @@ class Game
   end
 
   def mark_board(position)
+    
     case position
     when 1
       @board[0][0] = @current_player.mark
