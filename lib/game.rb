@@ -1,6 +1,16 @@
+require_relative 'player'
+
 class Game
-  def initialize
+  attr_accessor :current_player
+
+  def initialize(player_one, player_two)
     @board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    @players = [player_one, player_two]
+    @current_player = @players[0]
+  end
+
+  def swap_current_player
+    @current_player = @current_player == @players[0] ? @players[1] : @players[0]
   end
 
   def check_for_winner(player_mark)
@@ -47,6 +57,3 @@ class Game
     result
   end
 end
-
-my_game = Game.new
-my_game.display_board
