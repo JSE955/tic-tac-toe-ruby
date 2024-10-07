@@ -26,6 +26,7 @@ class Game
   end
 
   def display_board
+    puts '----------'
     puts "#{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]}"
     puts '----------'
     puts "#{@board[1][0]} | #{@board[1][1]} | #{@board[1][2]}"
