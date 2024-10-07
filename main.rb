@@ -1,9 +1,13 @@
 require_relative 'lib/game'
 require_relative 'lib/player'
 
-one = Player.new('Jordan', 'X')
-two = Player.new('Izzy', 'Y')
-game = Game.new(one, two)
-puts game.current_player.name
-game.swap_current_player
-puts game.current_player.name
+puts 'Welcome to Tic Tac Toe!'
+puts 'Player one - enter your name:'
+name = gets.chomp
+player_one = Player.new(name, 'X')
+puts 'Player two - enter your name: '
+name = gets.chomp
+player_two = Player.new(name, 'Y')
+game = Game.new(player_one, player_two)
+
+game.display_board
